@@ -1,0 +1,176 @@
+.body {
+  box-sizing: border-box;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+.container {
+  display: grid;
+  grid-template: 1fr 1fr 1fr / repeat (2, 1fr);
+  width: 820px;
+  height: 1260px;
+  /* border: 2px solid red; */
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+}
+
+header {
+  text-align: center;
+}
+
+.box1,
+.box2,
+.box3,
+.box4,
+.box5,
+.box6 {
+  /* border: 1px solid black; */
+  height: 400px;
+  width: 400px;
+}
+
+.box1 {
+  grid-area: 1 / 1 / span 1 / span 1;
+}
+
+.box2 {
+  grid-area: 2 / 1 / span 1 / span 1;
+}
+
+.box3 {
+  grid-area: 3 / 1 / span 1 / span 1;
+}
+
+.box4 {
+  grid-area: 1 / 2 / span 1 / span 1;
+}
+
+.box5 {
+  grid-area: 2 / 2 / span 1 / span 1;
+}
+
+.box6 {
+  grid-area: 3 / 2 / span 1 / span 1;
+}
+
+.box2,
+.box4,
+.box6 {
+  display: grid;
+  grid-template: repeat (2, 1fr) / repeat (2, 1fr);
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.a {
+  grid-area: 1 / 1 / span 1 / span 1;
+}
+
+.b {
+  grid-area: 2 / 1 / span 1 / span 1;
+}
+
+.c {
+  grid-area: 1 / 2 / span 1 / span 1;
+}
+
+.d {
+  grid-area: 2 / 2 / span 1 / span 1;
+}
+
+.a,
+.b,
+.c,
+.d {
+  width: 190px;
+  height: 190px;
+}
+
+img {
+  filter: grayscale(100%);
+  /* Using the following code, we need not to set the size of each image one by one */
+  height: 100%;
+  width: 100%;
+  /* It  fit the image by cutting the overflow pixels*/
+  /* Contain can show the full image but many gaps are appeared*/
+  object-fit: cover;
+}
+
+img:hover {
+  filter: grayscale(0%);
+  transform: scale(1.1);
+  transition: 1s;
+}
+
+@media (max-width: 850px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* What is the problem to delete this two line or change height to 100vh*/
+    height: 100%;
+    width: 40vw;
+  }
+
+  .container > div {
+    margin: 10px;
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* What is the problem to delete this two line or change height to 100vh*/
+    height: 100%;
+    width: 40vw;
+  }
+
+  .box1 {
+    order: 1;
+  }
+
+  .box3 {
+    order: 2;
+  }
+
+  .box5 {
+    order: 3;
+  }
+
+  .box2 {
+    order: 4;
+  }
+
+  .box4 {
+    order: 5;
+  }
+
+  .box6 {
+    order: 6;
+  }
+
+  .box1,
+  .box2,
+  .box3,
+  .box4,
+  .box5,
+  .box6 {
+    margin: 10px;
+  }
+}
+
+/* Height: 100% and Width: 100% for image, and its size is changed based on the browser's size */
+/*  */
+/* With object-fit, it ensure the image is within the box */
+
+/* two problems: 1) what is the difference using %, pixels for the image ; 2) why dose my div didn't decrease
+/* If using flex for the 4 images, we need to use flex property two time */
